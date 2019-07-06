@@ -1,0 +1,17 @@
+
+.no-found-label {
+  padding-top: 100px;
+}
+
+.pokemons-caught{
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 100px;
+}
+.img-content{
+  float: left;
+  border-width: 1px;
+  border-color: brown;
+  border-style: solid;
+  margin-right: 23px;
+}
