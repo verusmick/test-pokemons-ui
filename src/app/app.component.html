@@ -1,30 +1,72 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    PokeApi
-  </h1>
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary ">
+        <a class="navbar-brand" href="#">Square</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>                 
+          </ul>          
+        </div>
+</nav>
+
+<!-- <h1>{{testTitle}}</h1> -->
+
+<button [disabled] = "listo" (click)="activateAlert()">listo button</button>
+<hr>
+<input type="text" [(ngModel)] = "name">
+<input type="text" [(ngModel)] = "name2">
+<hr>
+<br>
+<p>{{name}}</p>
+<p>{{name2}}</p>
+<br>
+<div>
+    <!-- <ul class="list-group">
+        <ng-container *ngFor="let company of lista">
+                <li class="list-group-item"  *ngIf="company.active">
+                        {{company.companyName}}
+                    </li>
+        </ng-container>
+    </ul> -->
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>lugares Cercanos</h2>
+                    <ul class="list-group">
+                            <ng-container *ngFor="let company of lista; let i = index" [ngSwitch]="company.cercania">
+                                <!-- <li [ngStyle]="{color:(company.active)? 'black':'gray'}" [ngClass]="{'my-style': (i+1) % 2 !== 0}"> -->
+                                <li class="list-group-item" 
+                                    [ngStyle]="{color:(company.active)? 'black':'gray'}" 
+                                    [resaltar]="company.plan" count-clicks>
+                                  {{company.companyName}} - 
+                                  <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}">Muy Cercano</span>
+                                  <span *ngSwitchCase="2">Cercano</span>
+                                  <span *ngSwitchCase="3" [ngStyle]="{color: 'blue'}">Lejano</span>
+                                </li>            
+                            </ng-container>
+                        </ul>            
+            </div>
+
+            <div class="col-md-4">
+                <h2>estacados</h2>
+                
+
+            </div>
+                
+        </div>            
+    </div>    
 </div>
 
-<div style="text-align:center">
-  <input type="text" [(ngModel)]="pokeName" name="pokeName">
-  <button (click)="catchPokemon( )">Catch!</button>
-</div>
 
-<div class="text-center row no-found-label" *ngIf="pokeList?.length == 0">
-  <p>No pokemon captured yet</p>
-</div>
+    
 
-<div class="pokemons-caught">
-  <div *ngFor="let pokemon of pokeList" class="row col-md-8 col-md-offset-2">
-    <div class="img-content">
-      <img src="{{pokemon.sprites.front_default}}" alt="" style="width: 100%; height: 100%">
-    </div>
 
-    <div class="content">
-      <h3><b>PokemonID:</b> {{pokemon.id}}</h3>
-      <h3><b>Name:</b> {{pokemon.name}}</h3>
-    </div>
-  </div>
-</div>
 
-<router-outlet></router-outlet>
